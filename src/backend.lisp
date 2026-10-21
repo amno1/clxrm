@@ -4,7 +4,7 @@
 ;;;;
 ;;;; The core reaches the server only through these generic functions.  A
 ;;;; backend implements them for its connection class; CLXRM/CLX does it for
-;;;; XLIB:DISPLAY and CLXRM/XCB for XCB:XCB-CONNECTION.  Nothing here knows
+;;;; XLIB:DISPLAY and CLXRM/XCB for XCB:CONNECTION.  Nothing here knows
 ;;;; about Xrm, and nothing in the rest of the core knows which backend it is
 ;;;; talking to.
 ;;;;
@@ -21,7 +21,7 @@
 
 (defgeneric context-backend (context)
   (:documentation "Return the BACKEND that talks to CONTEXT: an
-   XLIB:DISPLAY for the CLX backend, an XCB:XCB-CONNECTION for the XCB
+   XLIB:DISPLAY for the CLX backend, an XCB:CONNECTION for the XCB
    backend, or any object whose class has these methods.")
   (:method (context)
     (error "No clXrm backend for ~S.  Load CLXRM/CLX or CLXRM/XCB, ~

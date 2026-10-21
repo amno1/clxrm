@@ -2,7 +2,7 @@
 ;;;; Copyright (C) 2026 Arthur Miller
 ;;;; SPDX-License-Identifier: MIT
 ;;;;
-;;;; The context is an XCB:XCB-CONNECTION, a screen an XCB:SCREEN, a
+;;;; The context is an XCB:CONNECTION, a screen an XCB:SCREEN, a
 ;;;; window a window ID (an integer).
 ;;;;
 ;;;; Only symbols CLXCB exports are used: the generated xproto requests
@@ -15,7 +15,7 @@
   (:use #:cl)
   (:export #:xcb-backend)
   (:documentation "clXrm backend for CLXCB: lets the clXrm server
-   functions take an XCB:XCB-CONNECTION as their context."))
+   functions take an XCB:CONNECTION as their context."))
 
 (in-package #:clxrm/xcb)
 
@@ -32,10 +32,10 @@
   "How much of a property to ask for first, in 32-bit units, as
    xcb-util-xrm's xcb_xrm_database_from_resource_manager does.")
 
-(defmethod xrm:context-backend ((context xcb:xcb-connection))
+(defmethod xrm:context-backend ((context xcb:connection))
   *backend*)
 
-(defmethod xrm:context-default-screen ((context xcb:xcb-connection))
+(defmethod xrm:context-default-screen ((context xcb:connection))
   (first (xcb:conn-roots context)))
 
 (defmethod xrm:backend-screen-root ((backend xcb-backend) context (screen xcb:screen))

@@ -814,7 +814,7 @@ xterm.vt100*background: black
   (let ((display (uiop:getenv "DISPLAY")))
     (when (and display (plusp (length display)) (find-package "CLXRM/XCB"))
       (uiop:symbol-call
-       '#:xcb '#:call-with-xcb-connection
+       '#:xcb '#:call-with-x-connection
        (lambda (conn)
          (let ((backend (xrm:context-backend conn))
                (root (xrm::%screen-root conn nil))
